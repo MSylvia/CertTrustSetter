@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		EA31945E1B1F5021002C8516 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EA31945D1B1F5021002C8516 /* main.c */; };
 		EA3194661B1F5175002C8516 /* CertTrustSetter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA3194651B1F5175002C8516 /* CertTrustSetter.cpp */; };
+		EA3194691B1F981F002C8516 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3194681B1F981F002C8516 /* Security.framework */; };
+		EA31946B1B1F9829002C8516 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA31946A1B1F9829002C8516 /* CoreFoundation.framework */; };
+		EA31946D1B1F9910002C8516 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EA31946C1B1F9910002C8516 /* libcrypto.dylib */; };
+		EA31946F1B1F9A2E002C8516 /* P12Extract.c in Sources */ = {isa = PBXBuildFile; fileRef = EA31946E1B1F9A2E002C8516 /* P12Extract.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +32,10 @@
 		EA31945D1B1F5021002C8516 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EA3194641B1F504E002C8516 /* CertTrustSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertTrustSetter.h; sourceTree = "<group>"; };
 		EA3194651B1F5175002C8516 /* CertTrustSetter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CertTrustSetter.cpp; sourceTree = "<group>"; };
+		EA3194681B1F981F002C8516 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EA31946A1B1F9829002C8516 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		EA31946C1B1F9910002C8516 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		EA31946E1B1F9A2E002C8516 /* P12Extract.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = P12Extract.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA31946D1B1F9910002C8516 /* libcrypto.dylib in Frameworks */,
+				EA31946B1B1F9829002C8516 /* CoreFoundation.framework in Frameworks */,
+				EA3194691B1F981F002C8516 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +55,7 @@
 		EA3194511B1F5020002C8516 = {
 			isa = PBXGroup;
 			children = (
+				EA3194671B1F9813002C8516 /* Frameworks */,
 				EA31945C1B1F5021002C8516 /* CertTrustSetter */,
 				EA31945B1B1F5021002C8516 /* Products */,
 			);
@@ -63,8 +75,19 @@
 				EA31945D1B1F5021002C8516 /* main.c */,
 				EA3194641B1F504E002C8516 /* CertTrustSetter.h */,
 				EA3194651B1F5175002C8516 /* CertTrustSetter.cpp */,
+				EA31946E1B1F9A2E002C8516 /* P12Extract.c */,
 			);
 			path = CertTrustSetter;
+			sourceTree = "<group>";
+		};
+		EA3194671B1F9813002C8516 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA31946C1B1F9910002C8516 /* libcrypto.dylib */,
+				EA31946A1B1F9829002C8516 /* CoreFoundation.framework */,
+				EA3194681B1F981F002C8516 /* Security.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA31946F1B1F9A2E002C8516 /* P12Extract.c in Sources */,
 				EA31945E1B1F5021002C8516 /* main.c in Sources */,
 				EA3194661B1F5175002C8516 /* CertTrustSetter.cpp in Sources */,
 			);
@@ -211,9 +235,11 @@
 		EA3194621B1F5021002C8516 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -221,9 +247,11 @@
 		EA3194631B1F5021002C8516 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
